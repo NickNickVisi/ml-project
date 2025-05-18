@@ -6,12 +6,13 @@ import pandas as pd
 
 
 def train(df):
+
 # Split train/test
-    train_df, test_df = train_test_split(df, test_size=0.25, random_state=42)
+    train_df, test_df = train_test_split(df, test_size=0.285, random_state=42)
 
 # Encode categorice
     combined = pd.concat([train_df, test_df])
-    for col in ['sex', 'activitate_fizica']:
+    for col in ['activitate_fizica']:
        le = LabelEncoder()
        combined[col] = le.fit_transform(combined[col])
     train_df = combined.iloc[:len(train_df)]
