@@ -27,6 +27,7 @@ def generate_patient_data(n):
 
     columns = ['varsta', 'greutate', 'inaltime', 'fumator',
                'activitate_fizica', 'glicemie', 'tensiune', 'risc_diabet']
+               
     
     return pd.DataFrame(data, columns=columns)
 

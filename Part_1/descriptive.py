@@ -7,7 +7,7 @@ def description(df):
     print()
 
     print("Statistici descriptive categorice:")
-    print(df.describe(include=['object', 'category']))
+    print(df.describe(include=['object', 'category']).T)
     print()
 
 def variable_distribution(df):
@@ -43,8 +43,8 @@ def replace_absurd_values(df):
         Q1 = df[col].quantile(0.25)
         Q3 = df[col].quantile(0.75)
         IQR = Q3 - Q1
-        limita_inf = Q1 - 1.4 * IQR
-        limita_sup = Q3 + 1.4 * IQR
+        limita_inf = Q1 - 1.2 * IQR
+        limita_sup = Q3 + 1.2 * IQR
 
         mediana = df[col].median()
         df.loc[df[col] < limita_inf, col] = mediana

@@ -14,13 +14,11 @@ def print2(df):
     print()
 
 def generate_missing_values(df):
-    nr_lipsa = int(0.05 * len(df)) # Consider 5% dintre valori sunt lipsa
-    index_random = df.sample(n=nr_lipsa, random_state=42).index
-    df.loc[index_random, 'glicemie'] = np.nan
-    nr_lipsa = int(0.025 * len(df)) # Consider 2.5% dintre valori sunt lipsa
-    index_random = df.sample(n=nr_lipsa, random_state=42).index
-    df.loc[index_random, 'fumator'] = np.nan
-    df.loc[index_random, 'activitate_fizica'] = np.nan
+    for col in df.columns:
+        procent_lipsa = np.random.uniform(0, 0.05)
+        nr_lipsa = int(procent_lipsa * len(df))
+        index_random = df.sample(n=nr_lipsa, random_state=42).index
+        df.loc[index_random, col] = np.nan
 
     ### Afisam procente pentru valorile lipsa
     print2(df)
@@ -28,6 +26,10 @@ def generate_missing_values(df):
 
 
 def fill_missing_values(df): 
-    df['glicemie'] = df['glicemie'].fillna(df['glicemie'].mean())
-    df['activitate_fizica'] = df['activitate_fizica'].fillna(df['activitate_fizica'].mode()[0])
-    df['fumator'] = df['fumator'].fillna(df['fumator'].mean())
+    for col in df.columns:
+        if df[col].dtype in ['int64', 'float64']:
+            df[col] = df[col].fillna(df[col].mean())
+        elif df[col].dtype in ['object', 'category']:
+            df[col] = df[col].fillna(df[col].mode()[0])
+        else:
+            df[col] = df[col].fillna(np.random.choice([0, 1]))

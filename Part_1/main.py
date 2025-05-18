@@ -15,18 +15,20 @@ from descriptive import replace_absurd_values
 
 x = read()
 df = generate_patient_data(int (x))
+df['fumator'] = df['fumator'].astype('category')
+df['risc_diabet'] = df['risc_diabet'].astype('category')
 
 generate_missing_values(df)
 fill_missing_values(df)
 
 train_df, test_df, y_pred, y_test = train(df)
 
-description(df)
 
-variable_distribution(df)
 
 replace_absurd_values(df)
+variable_distribution(df)
 boxplot(df)
+description(df)
 
 
 printf(y_test, y_pred)
