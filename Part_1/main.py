@@ -16,9 +16,6 @@ fill_missing_values(df)
 
 train_df, test_df, y_pred, y_test = train(df)
 
-train_df.to_csv("train.csv", index=False)
-test_df.to_csv("test.csv", index=False)
-
 printf(y_test, y_pred)
 
 Heatmap(train_df)

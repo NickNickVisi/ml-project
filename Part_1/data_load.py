@@ -1,8 +1,7 @@
-# data_utils.py
-
 import pandas as pd
 import numpy as np
 import random
+from model import train
 
 # Generează datele
 def generate_patient_data(n):
@@ -28,4 +27,12 @@ def generate_patient_data(n):
 
     columns = ['varsta', 'greutate', 'inaltime', 'fumator',
                'activitate_fizica', 'glicemie', 'tensiune', 'risc_diabet']
+    
     return pd.DataFrame(data, columns=columns)
+
+
+if __name__ == '__main__':
+    df = generate_patient_data(1400)
+    train_df, test_df, y_pred, y_test = train(df)
+    train_df.to_csv("train.csv", index=False)
+    test_df.to_csv("test.csv", index=False)
