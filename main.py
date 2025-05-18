@@ -1,5 +1,4 @@
 # main.py
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -8,7 +7,8 @@ from sklearn.metrics import accuracy_score, classification_report
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from part1 import generate_patient_data
+from data_load import generate_patient_data
+from plot import Heatmap
 
 # Generează datele
 df = generate_patient_data(800)
@@ -39,9 +39,6 @@ y_pred = model.predict(X_test)
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print(classification_report(y_test, y_pred))
 
-# Heatmap (optional)
-corr = train_df.corr()
-sns.heatmap(corr, annot=True, cmap='coolwarm')
-plt.title("Corelații")
-plt.tight_layout()
-plt.show()
+Heatmap(train_df)
+
+
