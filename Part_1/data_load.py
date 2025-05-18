@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import random
 
+# Generează datele
 def generate_patient_data(n):
     data = []
     for _ in range(n):
@@ -12,8 +13,8 @@ def generate_patient_data(n):
         inaltime = np.random.uniform(1.5, 2.0)
         fumator = np.random.choice([0, 1])
         activitate_fizica = random.choices(['scazuta', 'medie', 'intensa'], weights=[0.4, 0.4, 0.2])[0]
-        glicemie = np.random.normal(100, 30)
-        tensiune = np.random.normal(125, 15)
+        glicemie = np.random.normal(105, 30)
+        tensiune = np.random.normal(120, 15)
 
         risc = 0
         if glicemie > 140 or (fumator == 1 and activitate_fizica == 'scazuta') or tensiune > 150:

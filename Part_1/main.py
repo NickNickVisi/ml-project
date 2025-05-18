@@ -4,8 +4,7 @@ from plot import Heatmap
 from print import printf
 from model import train
 
-# Generează datele
-x = input ("Introdu numarul de teste dorite: ") 
+x = input ("Introdu numarul dorit de teste: ") 
 while int(x) < 700:
     x = input ("Numar invalid de teste, alege un alt numar: ") 
 
