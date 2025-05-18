@@ -7,6 +7,11 @@ from model import train
 from read_data import read
 from missing_values import generate_missing_values
 from missing_values import fill_missing_values
+from descriptive import description
+from descriptive import variable_distribution
+from descriptive import boxplot
+from descriptive import replace_absurd_values
+
 
 x = read()
 df = generate_patient_data(int (x))
@@ -15,6 +20,14 @@ generate_missing_values(df)
 fill_missing_values(df)
 
 train_df, test_df, y_pred, y_test = train(df)
+
+description(df)
+
+variable_distribution(df)
+
+replace_absurd_values(df)
+boxplot(df)
+
 
 printf(y_test, y_pred)
 

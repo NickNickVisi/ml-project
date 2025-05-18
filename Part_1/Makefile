@@ -5,6 +5,7 @@ run:
 	
 clean:
 	rm -rf __pycache__/
+	rm *.png
 
 generate:
 	python3 data_load.py

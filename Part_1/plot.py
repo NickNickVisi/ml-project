@@ -10,7 +10,7 @@ def Heatmap(train_df):
     sns.heatmap(corr, annot=True, cmap='coolwarm')
     plt.title("Corelații")
     plt.tight_layout()
-    plt.show()
+    plt.savefig(f'Heatmap.png')
 
 if __name__ == '__main__':
     df = pd.read_csv("train.csv")
