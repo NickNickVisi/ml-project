@@ -11,6 +11,7 @@ from descriptive import description
 from descriptive import variable_distribution
 from descriptive import boxplot
 from descriptive import replace_absurd_values
+from plot import violin_plots
 
 
 x = read()
@@ -20,17 +21,16 @@ df['risc_diabet'] = df['risc_diabet'].astype('category')
 
 generate_missing_values(df)
 fill_missing_values(df)
-
-train_df, test_df, y_pred, y_test = train(df)
-
-
-
-replace_absurd_values(df)
+description(df)
 variable_distribution(df)
 boxplot(df)
-description(df)
+replace_absurd_values(df)
 
 
+
+
+train_df, test_df, y_pred, y_test = train(df)
 printf(y_test, y_pred)
 
+violin_plots(df)
 Heatmap(train_df)
