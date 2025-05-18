@@ -1,4 +1,3 @@
-# main.py
 import numpy as np
 from data_load import generate_patient_data
 from plot import Heatmap
@@ -12,6 +11,7 @@ from descriptive import variable_distribution
 from descriptive import boxplot
 from descriptive import replace_absurd_values
 from plot import violin_plots
+
 
 
 x = read()

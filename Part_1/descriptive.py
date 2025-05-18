@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
+ 
 def description(df):
     print("Statistici descriptive numerice:")
     print(df.describe().T)
@@ -14,6 +15,7 @@ def description(df):
 def variable_distribution(df):
     numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
     categorical_cols = df.select_dtypes(include=['object', 'category']).columns 
+    
     # histograma pentru variabile numerice
     for col in numeric_cols:
         plt.figure()
@@ -21,6 +23,7 @@ def variable_distribution(df):
         plt.title(f'Distribuția: {col}')
         plt.savefig(f'{col}_hist.png')
         plt.close()
+
     # Countplot pentru categorice
     for col in categorical_cols:
         plt.figure()

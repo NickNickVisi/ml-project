@@ -14,7 +14,7 @@ def Heatmap(train_df):
 
 def violin_plots(df):
     arget = 'risc_diabet'
-    cols = ['fumator', 'activitate_fizica', 'glicemie', 'tensiune']
+    cols = [df.columns[i] for i in range(1, 7)]
     target = 'risc_diabet'
 
     for col in cols:

@@ -12,7 +12,7 @@ def generate_patient_data(n):
         inaltime = np.random.uniform(1.5, 2.0)
         fumator = np.random.choice([0, 1])
         zgomot_glicemie = np.random.normal(0, 7.5) 
-        activitate_fizica = random.choices(['scazuta', 'medie', 'intensa'], weights=[0.4, 0.4, 0.2])[0]
+        activitate_fizica = random.choices(['scazuta', 'medie', 'intensa'], weights=[0.4, 0.3, 0.2])[0]
         glicemie = np.random.normal(100, 30) + zgomot_glicemie
         tensiune = np.random.normal(120, 15)
 
