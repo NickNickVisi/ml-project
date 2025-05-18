@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 def description(df):
     print("Statistici descriptive numerice:")
@@ -49,3 +50,9 @@ def replace_absurd_values(df):
         mediana = df[col].median()
         df.loc[df[col] < limita_inf, col] = mediana
         df.loc[df[col] > limita_sup, col] = mediana
+
+if __name__ == '__main__':
+    df = pd.read_csv("train.csv")
+    variable_distribution(df)
+    boxplot(df)
+    replace_absurd_values(df)

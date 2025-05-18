@@ -3,10 +3,6 @@ MAIN=main.py
 run:
 	python3 $(MAIN)
 	
-clean:
-	rm -rf __pycache__/
-	rm *.png
-
 generate:
 	python3 data_load.py
 
@@ -15,3 +11,13 @@ plot:
 
 print:
 	python3 print.py
+
+statistics:
+	python3 descriptive.py
+
+random:
+	python3 missing_values.py
+
+clean:
+	rm -rf __pycache__/
+	rm *.png
