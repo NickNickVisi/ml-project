@@ -32,6 +32,7 @@ def variable_distribution(df):
         plt.savefig(f'images/hist/{col}_countplot.png')
         plt.close()
 
+
 def boxplot(df):
     numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
     for col in numeric_cols:
@@ -39,6 +40,35 @@ def boxplot(df):
         sns.boxplot(x=df[col])
         plt.title(f'Boxplot: {col}')
         plt.savefig(f'images/boxplot/{col}_boxplot.png')
+        plt.close()
+
+def variable_distribution2(df):
+    numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+    categorical_cols = df.select_dtypes(include=['object', 'category']).columns 
+    
+    # histograma pentru variabile numerice
+    for col in numeric_cols:
+        plt.figure()
+        sns.histplot(df[col], kde=True)
+        plt.title(f'Distribuția: {col}')
+        plt.savefig(f'images/hist/{col}_hist-test.png')
+        plt.close()
+
+    # Countplot pentru categorice
+    for col in categorical_cols:
+        plt.figure()
+        sns.countplot(x=col, data=df)
+        plt.title(f'Distribuție categorică: {col}')
+        plt.savefig(f'images/hist/{col}_countplot-test.png')
+        plt.close()
+
+def boxplot2(df):
+    numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+    for col in numeric_cols:
+        plt.figure()
+        sns.boxplot(x=df[col])
+        plt.title(f'Boxplot: {col}')
+        plt.savefig(f'images/boxplot/{col}_boxplot-test.png')
         plt.close()
 
 def replace_absurd_values(df):

@@ -7,10 +7,10 @@ import pandas as pd
 
 def train(df):
 
-# Split train/test
+# Impartim datele in train si test
     train_df, test_df = train_test_split(df, test_size=0.285, random_state=42)
 
-# Encode categorice
+# Encodam datele
     combined = pd.concat([train_df, test_df])
     for col in ['activitate_fizica']:
        le = LabelEncoder()
@@ -18,15 +18,16 @@ def train(df):
     train_df = combined.iloc[:len(train_df)]
     test_df = combined.iloc[len(train_df):]
 
-# Train/test split
+# Splituim datele
     X_train = train_df.drop(columns=['risc_diabet'])
     y_train = train_df['risc_diabet']
     X_test = test_df.drop(columns=['risc_diabet'])
     y_test = test_df['risc_diabet']
 
-# Train model
+# Antrenam modelul
     model = LogisticRegression(max_iter=1000)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
 
+# Afisam rezultatele
     return train_df, test_df, y_pred, y_test
