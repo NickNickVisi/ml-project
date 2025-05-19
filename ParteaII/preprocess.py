@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def analyze_data(df, file_path, subset):
+def analyze_data(df, subset):
     # Analiza datelor pentru a intelege distributia si corelatia
     print("Statistici descriptive:")
     # Afiseaza statistici descriptive cu 2 zecimale
@@ -41,7 +41,6 @@ def analyze_data(df, file_path, subset):
         plt.close()
         # Countplot-urile arata distributia categoriilor.
         # Daca o categorie domina, modelul poate fi dezechilibrat.
-        # Se poate decide aplicarea de tehnici de echilibrare cum ar fi oversampling.
 
     # Detectare outlieri folosind regula IQR pentru fiecare caracteristica numerica
     for col in numeric_cols:
@@ -59,12 +58,10 @@ def analyze_data(df, file_path, subset):
     plt.figure(figsize=(10, 8))
     sns.heatmap(corr, annot=True, cmap='coolwarm', fmt='.2f')
     plt.title('Matrice de corelatie')
-    plt.savefig("images/correlation_matrix.png")
+    plt.savefig(f"images/correlation_matrix_{subset}.png")
     plt.show()
     plt.close()
-    # Matricea de corelatie arata relatiile dintre variabile.
-    # Daca doua variabile sunt foarte corelate, se poate elimina una pentru a evita multicoliniaritatea.
-    # Se pot identifica variabile relevante pentru predictia targetului.
+    # Matricea de corelatie arata relatiile dintre variabile..
 
     # Violin plot pentru variabilele continue
     for col in numeric_cols:
@@ -77,7 +74,7 @@ def analyze_data(df, file_path, subset):
         plt.show()
         plt.close()
         # Violin plot-urile arata distributia variabilelor numerice in functie de target.
-        # Se poate observa daca exista diferente semnificative intre clase, ceea ce sugereaza ca variabila este relevanta pentru clasificare.
+        # In functie de distributie, se observa daca o variabila este relevanta pentru clasificare.
     
 
 def preprocess_data(file_path):
@@ -85,9 +82,6 @@ def preprocess_data(file_path):
     # Randurile cu valori lipsa pentru varsta vor deveni media varstei totale
     df['varsta'].fillna(df['varsta'].mean(), inplace=True)
 
-    # Folosesc standardizare pentru distributia normala a datelor, fiind un model de regresie
     scaler = StandardScaler()
     df[['varsta', 'greutate', 'inaltime', 'glicemie', 'activitate_fizica', 'tensiune']] = scaler.fit_transform(df[['varsta', 'greutate', 'inaltime', 'glicemie', 'activitate_fizica', 'tensiune']])
-    # Standardizarea este necesara pentru ca modelul sa nu fie influentat de scara variabilelor.
-    # Ajuta la convergenta algoritmilor si la comparabilitatea coeficientilor.
     return df

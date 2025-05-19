@@ -4,11 +4,11 @@ import compare_algorithms
 def main():
     df_train = preprocess.preprocess_data("train.csv")
 
-    preprocess.analyze_data(df_train, "train.csv", "train")
+    preprocess.analyze_data(df_train, "train")
 
     df_test = preprocess.preprocess_data("test.csv")
 
-    preprocess.analyze_data(df_test, "test.csv", "test")
+    preprocess.analyze_data(df_test, "test")
 
     models = compare_algorithms.train_models(df_train)
 
