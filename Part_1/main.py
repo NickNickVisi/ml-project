@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from data_load import generate_patient_data
 from plot import Heatmap
 from print import printf
@@ -14,10 +15,22 @@ from plot import violin_plots
 
 
 
-x = read()
-df = generate_patient_data(int (x))
+
+
+print()
+print("Do you want to generate a new dataset? (y/n)")
+response = input()
+if response.lower() == 'y':
+    x = read()
+    df = generate_patient_data(int (x))
+
+else:
+    df = pd.read_csv("train.csv")
+
+# Le facem de tip category
 df['fumator'] = df['fumator'].astype('category')
 df['risc_diabet'] = df['risc_diabet'].astype('category')
+
 
 generate_missing_values(df)
 fill_missing_values(df)
