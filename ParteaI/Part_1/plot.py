@@ -10,10 +10,10 @@ def Heatmap(train_df):
     sns.heatmap(corr, annot=True, cmap='coolwarm')
     plt.title("Corelații")
     plt.tight_layout()
-    plt.savefig(f'Heatmap.png')
+    plt.savefig(f'images/Heatmap.png')
 
 def violin_plots(df):
-    arget = 'risc_diabet'
+    target = 'risc_diabet'
     cols = [df.columns[i] for i in range(1, 7)]
     target = 'risc_diabet'
 
@@ -25,11 +25,11 @@ def violin_plots(df):
         plt.ylabel(col.capitalize())
         plt.grid(True)
         plt.tight_layout()
-        plt.savefig(f'violin_{col}_vs_{target}.png')  # salvează imaginea
+        plt.savefig(f'images/violin/violin_{col}_vs_{target}.png')  # salvează imaginea
 
 
 if __name__ == '__main__':
-    df = pd.read_csv("train.csv")
+    df = pd.read_csv("test.csv")
     train_df, test_df, y_pred, y_test = train(df)
     Heatmap(train_df)
     violin_plots(df)

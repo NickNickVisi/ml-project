@@ -33,6 +33,6 @@ def fill_missing_values(df):
             df[col] = df[col].fillna(np.random.choice([0, 1]))
 
 if __name__ == '__main__':
-    df = pd.read_csv("train.csv")
+    df = pd.read_csv("test.csv")
     generate_missing_values(df)
     fill_missing_values(df)

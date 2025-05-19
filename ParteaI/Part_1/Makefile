@@ -1,8 +1,12 @@
 MAIN=main.py
 
 run:
+	rm -rf images
+	mkdir -p images/hist
+	mkdir -p images/violin
+	mkdir -p images/boxplot
 	python3 $(MAIN)
-	
+
 generate:
 	python3 data_load.py
 
@@ -20,4 +24,4 @@ random:
 
 clean:
 	rm -rf __pycache__/
-	rm *.png
+	rm -rf images

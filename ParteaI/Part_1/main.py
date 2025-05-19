@@ -13,10 +13,6 @@ from descriptive import boxplot
 from descriptive import replace_absurd_values
 from plot import violin_plots
 
-
-
-
-
 print()
 print("Do you want to generate a new dataset? (y/n)")
 response = input()
@@ -30,6 +26,7 @@ else:
 # Le facem de tip category
 df['fumator'] = df['fumator'].astype('category')
 df['risc_diabet'] = df['risc_diabet'].astype('category')
+df['activitate_fizica'] = df['activitate_fizica'].astype('category')
 
 
 generate_missing_values(df)

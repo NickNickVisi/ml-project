@@ -21,7 +21,7 @@ def variable_distribution(df):
         plt.figure()
         sns.histplot(df[col], kde=True)
         plt.title(f'Distribuția: {col}')
-        plt.savefig(f'{col}_hist.png')
+        plt.savefig(f'images/hist/{col}_hist.png')
         plt.close()
 
     # Countplot pentru categorice
@@ -29,7 +29,7 @@ def variable_distribution(df):
         plt.figure()
         sns.countplot(x=col, data=df)
         plt.title(f'Distribuție categorică: {col}')
-        plt.savefig(f'{col}_countplot.png')
+        plt.savefig(f'images/hist/{col}_countplot.png')
         plt.close()
 
 def boxplot(df):
@@ -38,7 +38,7 @@ def boxplot(df):
         plt.figure()
         sns.boxplot(x=df[col])
         plt.title(f'Boxplot: {col}')
-        plt.savefig(f'{col}_boxplot.png')
+        plt.savefig(f'images/boxplot/{col}_boxplot.png')
         plt.close()
 
 def replace_absurd_values(df):
@@ -55,7 +55,7 @@ def replace_absurd_values(df):
         df.loc[df[col] > limita_sup, col] = mediana
 
 if __name__ == '__main__':
-    df = pd.read_csv("train.csv")
+    df = pd.read_csv("test.csv")
     variable_distribution(df)
     boxplot(df)
     replace_absurd_values(df)
