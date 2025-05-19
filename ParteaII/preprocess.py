@@ -4,9 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def analyze_data(df, subset):
-    # Analiza datelor pentru a intelege distributia si corelatia
     print("Statistici descriptive:")
-    # Afiseaza statistici descriptive cu 2 zecimale
     pd.set_option('display.float_format', lambda x: '%.5f' % x)
     print(df.describe())
     pd.reset_option('display.float_format')
@@ -26,7 +24,7 @@ def analyze_data(df, subset):
         plt.show()
         plt.close()
         # Histogramele arata distributia fiecarei variabile numerice.
-        # Se pot observa posibile outlieri sau valori atipice.
+        # Se pot observa posibile valori atipice.
 
     # Countplot pentru fiecare caracteristica categorica
     categoric_cols = df.select_dtypes(include=['object', 'category']).columns
@@ -51,7 +49,7 @@ def analyze_data(df, subset):
         upper_bound = Q3 + 1.2 * IQR
         outliers = df[(df[col] < lower_bound) | (df[col] > upper_bound)]
         print(f'Numar de outlieri in {col}: {outliers.shape[0]}')
-        # Prezenta outlierilor poate afecta performanta modelului..
+        # Prezenta outlierilor poate afecta performanta modelului.
 
     # Matrice de corelatie
     corr = df.corr()
@@ -61,7 +59,6 @@ def analyze_data(df, subset):
     plt.savefig(f"images/correlation_matrix_{subset}.png")
     plt.show()
     plt.close()
-    # Matricea de corelatie arata relatiile dintre variabile..
 
     # Violin plot pentru variabilele continue
     for col in numeric_cols:
