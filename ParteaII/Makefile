@@ -1,5 +1,5 @@
 run:
-	python3 main.python3
+	python3 main.py
 
 clean:
 	rm images/*.png
