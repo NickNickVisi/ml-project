@@ -25,8 +25,8 @@ random:
 git:
 	git add .
 	echo "Add message: " 
-	var=$(</dev/stdin)
-	git commit -m "$var"
+	read input
+	git commit -m "$input"
 	git push
 
 clean:
