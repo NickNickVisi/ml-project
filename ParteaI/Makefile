@@ -22,6 +22,13 @@ statistics:
 random:
 	python3 missing_values.py
 
+git:
+	git add .
+	echo "Add message: " 
+	var=$(</dev/stdin)
+	git commit -m "$var"
+	git push
+
 clean:
 	rm -rf __pycache__/
 	rm -rf images
