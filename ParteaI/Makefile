@@ -25,8 +25,7 @@ random:
 git:
 	git pull --no-rebase
 	git add .
-	read -p "Add message: " input
-	git commit -m $input
+	read -p "Add message: " input; git commit -m "$$input"
 	git push
 
 clean:
