@@ -23,11 +23,12 @@ random:
 	python3 missing_values.py
 
 git:
+	rm -rf __pycache__/
 	git pull --no-rebase
 	git add .
+	clear
 	./commit.sh
 	git push
 
 clean:
-	rm -rf __pycache__/
 	rm -rf images
