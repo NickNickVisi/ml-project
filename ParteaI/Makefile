@@ -23,9 +23,9 @@ random:
 	python3 missing_values.py
 
 git:
+	git pull --no-rebase
 	git add .
-	echo "Add message: " 
-	read input
+	read -p "Add message: " input
 	git commit -m "$input"
 	git push
 
