@@ -7,6 +7,7 @@ run:
 	mkdir -p images/boxplot
 	python3 $(MAIN)
 
+
 generate:
 	python3 data_load.py
 
