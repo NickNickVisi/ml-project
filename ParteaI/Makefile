@@ -28,7 +28,7 @@ git:
 	git pull --no-rebase
 	git add .
 	clear
-	read -p "Enter commit message: " msg
+	@read -p "Enter commit message: " msg
 	git commit -m $msg
 	git push
 
