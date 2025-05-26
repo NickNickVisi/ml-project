@@ -27,7 +27,7 @@ git:
 	git pull --no-rebase
 	git add .
 	clear
-	./commit.sh
+	git commit -m "Update"
 	git push
 
 clean:
