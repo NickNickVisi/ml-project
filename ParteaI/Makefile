@@ -7,7 +7,6 @@ run:
 	mkdir -p images/boxplot
 	python3 $(MAIN)
 
-
 generate:
 	python3 data_load.py
 
@@ -28,8 +27,7 @@ git:
 	git pull --no-rebase
 	git add .
 	clear
-	read -p "Enter commit message: " msg
-	@git commit -m "$msg"
+	./commit.sh
 	git push
 
 clean:
